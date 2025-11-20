@@ -20,7 +20,7 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    if (!validators.email(form.email)) return setError('Enter a valid email');
+    if (!validators.email(String(form.email).trim())) return setError('Enter a valid email');
     if (!validators.minLength(form.password, 6)) return setError('Password must be at least 6 characters');
     try {
       await register(form.email, form.password);
